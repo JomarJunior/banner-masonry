@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  banner-masonry:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    container_name: banner-masonry-app
+    environment:
+      - NODE_ENV=production
