@@ -23,6 +23,7 @@ A client-side photo masonry application that creates a single banner image with 
 ### Prerequisites
 
 - Node.js 18+ and npm
+- Docker (optional, for containerized deployment)
 
 ### Installation
 
@@ -55,6 +56,54 @@ The built files will be in the `dist` directory.
 # Preview production build locally
 npm run preview
 ```
+
+## Docker Deployment
+
+### Using Docker Compose (Recommended)
+
+```bash
+# Build and start the container
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the container
+docker-compose down
+```
+
+Open [http://localhost:8080](http://localhost:8080) in your browser.
+
+### Build Docker Image Manually
+
+```bash
+# Build the image
+docker build -t banner-masonry .
+
+# Run the container
+docker run -p 8080:80 banner-masonry
+```
+
+### Pull from GitHub Container Registry
+
+```bash
+# Pull the latest image
+docker pull ghcr.io/[your-username]/banner-masonry:latest
+
+# Run the container
+docker run -p 8080:80 ghcr.io/[your-username]/banner-masonry:latest
+```
+
+Replace `[your-username]` with your GitHub username.
+
+### CI/CD
+
+The project includes a GitHub Actions workflow that automatically:
+- Builds a Docker image on every push to `main`
+- Pushes the image to GitHub Container Registry (GHCR)
+- Tags images with branch name, commit SHA, and `latest`
+
+The workflow runs automatically when changes are pushed (ignoring markdown and license files).
 
 ## How It Works
 
