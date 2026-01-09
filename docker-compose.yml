@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   banner-masonry:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/jomarjunior/banner-masonry:main-e541d46
     ports:
       - "8080:80"
     restart: unless-stopped
